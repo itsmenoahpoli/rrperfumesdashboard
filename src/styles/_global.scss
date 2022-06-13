@@ -1,0 +1,228 @@
+html {
+  overflow-x: hidden;
+  background: #f5f9fc !important;
+}
+
+input:focus,
+input:active,
+select:focus,
+select:active,
+textarea:focus,
+textarea:active {
+  box-shadow: none !important;
+  border-color: blueviolet !important;
+}
+
+// FORM
+form {
+  .form-group {
+    margin-bottom: 10px;
+
+    .form-label {
+      font-size: 14px;
+    }
+  }
+
+  button[type="submit"] {
+    width: 100% !important;
+    padding: 12px 13px !important;
+  }
+}
+
+// Containers
+.container-fluid {
+  padding: 0 !important;
+}
+
+// AUTH-CONTAINER
+.auth-container {
+  // background: #f1f1f1 !important;
+  background: url(./../assets/images/login-bg.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+// DASHBOARD CONTAINER
+$sidebarWidth: 260px;
+$sidebarBg: #1363df;
+
+.dashboard-container {
+  background: #fcfcfc !important;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+
+  .sidebar-container,
+  .content-container {
+    height: 100vh;
+  }
+
+  .sidebar-container {
+    width: $sidebarWidth !important;
+    background: $sidebarBg;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    .sidebar-wrapper {
+      height: 100%;
+      width: 100%;
+      // background: url(./../assets/images/login-bg2.jpg);
+      // background-size: cover;
+      // background-position: center center;
+      // background-repeat: no-repeat;
+      position: relative;
+
+      .sidebar-bg-overlay {
+        background: rgba(19, 99, 223, 1) !important;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        // z-index: -1 !important;
+      }
+
+      .header-container {
+        height: 70px;
+      }
+
+      .link-buttons-container {
+        padding: 0 !important;
+
+        button {
+          width: 100%;
+          background: none;
+          display: block;
+          border: 0;
+          text-align: left;
+          font-size: 13px;
+          // text-transform: uppercase;
+          padding: 10px 15px !important;
+          margin-bottom: 10px;
+          display: flex;
+          align-items: center;
+          transition: 0.35s ease !important;
+
+          * {
+            color: #fff;
+          }
+
+          span.icon {
+            font-size: 18px;
+            margin-right: 10px;
+          }
+        }
+
+        button:hover,
+        button:active,
+        button:focus {
+          background: rgba(255, 255, 255, 0.15);
+        }
+
+        button:focus,
+        button:active {
+          box-shadow: none !important;
+        }
+      }
+    }
+  }
+
+  .content-container {
+    width: calc(100% - $sidebarWidth) !important;
+    margin-left: $sidebarWidth;
+
+    .page-content {
+      padding: 20px !important;
+
+      .breadcrumb {
+        margin-bottom: 35px;
+
+        li {
+          font-size: 14px;
+          text-decoration: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 5px;
+          text-transform: capitalize !important;
+
+          a {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+// DataTable
+.table-builder-container {
+  .card.datatable-card {
+    background: none !important;
+    border: 0;
+    border-radius: 14px !important;
+
+    // .card-body {
+    //   height: 50vh !important;
+    // }
+  }
+}
+
+.rdt_Table {
+  background: none !important;
+
+  .rdt_TableHead {
+    .rdt_TableHeadRow {
+      background: none !important;
+      border-bottom: 0 !important;
+      text-transform: uppercase !important;
+    }
+  }
+
+  .rdt_TableBody {
+    border-bottom: 0 !important;
+    margin: 5px 0 !important;
+
+    .rdt_TableRow {
+      margin-top: 5px !important;
+      border: solid 1px #f1f1f1 !important;
+      // box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+      .rdt_TableCell {
+        font-size: 14px !important;
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+
+        .btn-group {
+          button {
+            background: none !important;
+            border: 0 !important;
+          }
+
+          .btn-edit {
+            color: blue !important;
+          }
+
+          .btn-delete {
+            color: red !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+.rdt_Pagination {
+  border-top: 0 !important;
+  background: none !important;
+}
