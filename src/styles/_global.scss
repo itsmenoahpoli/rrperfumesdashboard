@@ -47,6 +47,10 @@ form {
   justify-content: center;
   align-items: center;
   position: relative;
+
+  .auth-wrapper {
+    zoom: 0.85 !important;
+  }
 }
 
 // DASHBOARD CONTAINER

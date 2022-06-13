@@ -6,7 +6,9 @@ export const AuthLayout = (props) => {
 
   return (
     <Container fluid className="auth-container">
-      {children}
+      <Container fluid className="auth-wrapper">
+        {children}
+      </Container>
     </Container>
   );
 };
