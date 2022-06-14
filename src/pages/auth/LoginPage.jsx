@@ -62,7 +62,7 @@ export const LoginPage = () => {
       <Container fluid className="form-container">
         <Card className="col-xs-10 col-sm-8 col-md-4 col-lg-3 col-xl-2 mx-auto">
           <Card.Body>
-            <h4 className="text-center mb-3">RR PERFUMES & COLLECTION</h4>
+            <h4 className="text-center mb-3">R&R PERFUMES & COLLECTION</h4>
             <h6 className="text-center text-danger mb-3">
               INVENTORY DASHBOARD
             </h6>
