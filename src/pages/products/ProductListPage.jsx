@@ -169,14 +169,6 @@ export const ProductListPage = () => {
     getData();
   }, []);
 
-  React.useEffect(() => {
-    console.log(product);
-  }, [product]);
-
-  React.useEffect(() => {
-    console.log(product);
-  }, [product]);
-
   return (
     <DashboardLayout>
       <h4>Products Management</h4>
@@ -195,11 +187,6 @@ export const ProductListPage = () => {
             <Button variant="secondary">
               <FiDownloadCloud />
               Export List
-            </Button>
-
-            <Button variant="secondary" disabled>
-              <FiUploadCloud />
-              Import List
             </Button>
           </div>
 

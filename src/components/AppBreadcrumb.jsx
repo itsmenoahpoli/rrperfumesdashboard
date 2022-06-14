@@ -25,7 +25,10 @@ export const AppBreadcrumb = (props) => {
       </Breadcrumb.Item>
 
       {paths.map((path, idx) => (
-        <Breadcrumb.Item active={Boolean(idx === paths.length - 1)}>
+        <Breadcrumb.Item
+          key={`breadcrumt-${path}`}
+          active={Boolean(idx === paths.length - 1)}
+        >
           {path}
         </Breadcrumb.Item>
       ))}

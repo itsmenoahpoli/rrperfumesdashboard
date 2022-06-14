@@ -1,4 +1,4 @@
-const prodUrl = "https://rrperfumesapp.pwnp-ws.com/api/v1";
+const prodUrl = "https://rrperfumesapp.pwnp-ws.com/public/api/v1";
 const devUrl = "http://localhost:8000/api/v1";
 
 export const apiConstants = {

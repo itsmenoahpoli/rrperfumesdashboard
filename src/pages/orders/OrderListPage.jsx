@@ -190,7 +190,7 @@ export const OrderListPage = () => {
 
               <small>&mdash; Card Items</small>
               <div className="my-2">
-                <p>{console.log(JSON.parse(view.data?.items))}</p>
+                {/* <p>{console.log(JSON.parse(view.data?.items))}</p> */}
               </div>
             </Col>
           </Row>
