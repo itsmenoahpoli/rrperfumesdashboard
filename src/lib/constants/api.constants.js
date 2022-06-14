@@ -7,5 +7,6 @@ export const apiConstants = {
       VERIFY_OTP: "/verify-otp",
     },
     PRODUCTS: "/products",
+    PRODUCT_CATEGORIES: "/product-categories",
   },
 };

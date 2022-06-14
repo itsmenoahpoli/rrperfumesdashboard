@@ -14,7 +14,7 @@ export const DashboardLayout = (props) => {
 
     return (
       <Container fluid className="sidebar-container shadow-lg">
-        <Container lfuid className="sidebar-wrapper">
+        <Container fluid className="sidebar-wrapper">
           <div className="sidebar-bg-overlay"></div>
 
           <Container

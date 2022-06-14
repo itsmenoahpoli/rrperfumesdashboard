@@ -1,9 +1,9 @@
 import { HttpService } from "lib/services/api";
 import { apiConstants } from "lib/constants";
 
-export default class ProductsService {
+export default class ProductCategoriesService {
   constructor() {
-    this.apiEndpointURL = apiConstants.V1.PRODUCTS;
+    this.apiEndpointURL = apiConstants.V1.PRODUCT_CATEGORIES;
     this.httpService = new HttpService(this.apiEndpointURL);
   }
 
@@ -26,19 +26,6 @@ export default class ProductsService {
 
   async create(data) {
     try {
-      let formData = new FormData();
-
-      formData.append("p_image", data.images[0]);
-
-      for (let d in data) {
-        formData.append(d, data[d]);
-      }
-
-      let response = this.httpService
-        .http()
-        .post(this.apiEndpointURL, formData);
-
-      return response;
     } catch (err) {
       console.log(err);
     }
