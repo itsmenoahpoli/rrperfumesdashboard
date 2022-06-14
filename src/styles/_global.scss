@@ -139,12 +139,13 @@ $sidebarBg: #000;
 
     .page-content {
       padding: 20px !important;
+      zoom: 0.9;
 
       .breadcrumb {
         margin-bottom: 35px;
 
         li {
-          font-size: 14px;
+          font-size: 13px;
           text-decoration: none;
           display: flex;
           justify-content: center;
@@ -154,6 +155,24 @@ $sidebarBg: #000;
 
           a {
             text-decoration: none;
+          }
+        }
+      }
+
+      .dt-actions-container {
+        .btn-container {
+          display: flex;
+          gap: 10px;
+          margin-bottom: 10px;
+
+          button {
+            font-size: 13px;
+            border-radius: 9px !important;
+            text-transform: uppercase;
+
+            * {
+              margin-right: 5px;
+            }
           }
         }
       }
@@ -177,6 +196,7 @@ $sidebarBg: #000;
     .rdt_TableHeadRow {
       background: none !important;
       border-bottom: 0 !important;
+      font-size: 13px !important;
       text-transform: uppercase !important;
     }
   }
@@ -191,7 +211,7 @@ $sidebarBg: #000;
       // box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 
       .rdt_TableCell {
-        font-size: 14px !important;
+        font-size: 15px !important;
         padding-top: 15px !important;
         padding-bottom: 15px !important;
 

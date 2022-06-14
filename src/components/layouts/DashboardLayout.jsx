@@ -44,11 +44,11 @@ export const DashboardLayout = (props) => {
   };
 
   React.useEffect(() => {
-    if (localStorage.getItem("accessToken") === null) {
-      navigate("/login", {
-        replace: true,
-      });
-    }
+    // if (localStorage.getItem("accessToken") === null) {
+    //   navigate("/login", {
+    //     replace: true,
+    //   });
+    // }
   }, []);
 
   return (

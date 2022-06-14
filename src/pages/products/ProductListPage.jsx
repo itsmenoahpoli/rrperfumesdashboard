@@ -1,6 +1,12 @@
 import React from "react";
 import { Container, ButtonGroup, Button } from "react-bootstrap";
-import { FiEdit2, FiTrash2 } from "react-icons/fi";
+import {
+  FiEdit2,
+  FiTrash2,
+  FiPlusCircle,
+  FiDownloadCloud,
+  FiUploadCloud,
+} from "react-icons/fi";
 
 import { DashboardLayout } from "components/layouts";
 import { TableBuilder } from "components/tables";
@@ -34,6 +40,10 @@ export const ProductListPage = () => {
         selector: ({ status }) => status,
       },
       {
+        name: "Date Created",
+        selector: ({ created_at }) => created_at,
+      },
+      {
         name: "Actions",
         selector: ({ id }) => id,
         right: true,
@@ -52,134 +62,31 @@ export const ProductListPage = () => {
     []
   );
 
-  const [data] = React.useState([
-    {
-      sku: "SKU-1LKNSFNAU",
-      name: "Perfume for MEN 275ml",
-      in_stocks: 32,
-      price: 325,
-      status: "AVAILABLE",
-      product_category: {
-        name: "Men's Collection",
-      },
-    },
-    {
-      sku: "SKU-1LKNSFNAU",
-      name: "Perfume for MEN 275ml",
-      in_stocks: 32,
-      price: 325,
-      status: "AVAILABLE",
-      product_category: {
-        name: "Men's Collection",
-      },
-    },
-    {
-      sku: "SKU-1LKNSFNAU",
-      name: "Perfume for MEN 275ml",
-      in_stocks: 32,
-      price: 325,
-      status: "AVAILABLE",
-      product_category: {
-        name: "Men's Collection",
-      },
-    },
-    {
-      sku: "SKU-1LKNSFNAU",
-      name: "Perfume for MEN 275ml",
-      in_stocks: 32,
-      price: 325,
-      status: "AVAILABLE",
-      product_category: {
-        name: "Men's Collection",
-      },
-    },
-    {
-      sku: "SKU-1LKNSFNAU",
-      name: "Perfume for MEN 275ml",
-      in_stocks: 32,
-      price: 325,
-      status: "AVAILABLE",
-      product_category: {
-        name: "Men's Collection",
-      },
-    },
-    {
-      sku: "SKU-1LKNSFNAU",
-      name: "Perfume for MEN 275ml",
-      in_stocks: 32,
-      price: 325,
-      status: "AVAILABLE",
-      product_category: {
-        name: "Men's Collection",
-      },
-    },
-    {
-      sku: "SKU-1LKNSFNAU",
-      name: "Perfume for MEN 275ml",
-      in_stocks: 32,
-      price: 325,
-      status: "AVAILABLE",
-      product_category: {
-        name: "Men's Collection",
-      },
-    },
-    {
-      sku: "SKU-1LKNSFNAU",
-      name: "Perfume for MEN 275ml",
-      in_stocks: 32,
-      price: 325,
-      status: "AVAILABLE",
-      product_category: {
-        name: "Men's Collection",
-      },
-    },
-    {
-      sku: "SKU-1LKNSFNAU",
-      name: "Perfume for MEN 275ml",
-      in_stocks: 32,
-      price: 325,
-      status: "AVAILABLE",
-      product_category: {
-        name: "Men's Collection",
-      },
-    },
-    {
-      sku: "SKU-1LKNSFNAU",
-      name: "Perfume for MEN 275ml",
-      in_stocks: 32,
-      price: 325,
-      status: "AVAILABLE",
-      product_category: {
-        name: "Men's Collection",
-      },
-    },
-    {
-      sku: "SKU-1LKNSFNAU",
-      name: "Perfume for MEN 275ml",
-      in_stocks: 32,
-      price: 325,
-      status: "AVAILABLE",
-      product_category: {
-        name: "Men's Collection",
-      },
-    },
-    {
-      sku: "SKU-1LKNSFNAU",
-      name: "Perfume for MEN 275ml",
-      in_stocks: 32,
-      price: 325,
-      status: "AVAILABLE",
-      product_category: {
-        name: "Men's Collection",
-      },
-    },
-  ]);
+  const [data] = React.useState([]);
 
   return (
     <DashboardLayout>
-      <h2>PRODUCTS</h2>
+      <h4>Products Management</h4>
 
       <Container fluid className="mt-3">
+        <Container fluid className="dt-actions-container">
+          <div className="btn-container">
+            <Button variant="info">
+              <FiPlusCircle />
+              Add Product
+            </Button>
+
+            <Button variant="secondary">
+              <FiDownloadCloud />
+              Export List
+            </Button>
+
+            <Button variant="secondary" disabled>
+              <FiUploadCloud />
+              Import List
+            </Button>
+          </div>
+        </Container>
         <TableBuilder columns={columns} data={data} />
       </Container>
     </DashboardLayout>
