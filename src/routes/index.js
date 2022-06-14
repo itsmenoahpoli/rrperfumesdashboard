@@ -63,7 +63,7 @@ export const appRoutes = [
   {
     path: "/dashboard",
     name: "app-dashboard",
-    component: <DashboardPage />,
+    component: <Navigate to="/dashboard" replace />,
     meta: {
       name: "Dashboard",
       auth: true,
