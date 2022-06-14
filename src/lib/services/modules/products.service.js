@@ -46,6 +46,14 @@ export default class ProductsService {
 
   async update(id, data) {
     try {
+      data.product_category_id = data.product_category.id;
+      delete data.product_category;
+
+      let response = this.httpService
+        .http()
+        .patch(this.apiEndpointURL + "/" + id, data);
+
+      return response;
     } catch (err) {
       console.log(err);
     }
@@ -53,6 +61,11 @@ export default class ProductsService {
 
   async destroy(id) {
     try {
+      let response = this.httpService
+        .http()
+        .delete(this.apiEndpointURL + "/" + id);
+
+      return response;
     } catch (err) {
       console.log(err);
     }

@@ -28,6 +28,15 @@ form {
     padding: 12px 13px !important;
     margin-bottom: 10px;
   }
+
+  .btn-grid {
+    display: flex;
+    gap: 10px;
+
+    button {
+      padding: 8px 13px !important;
+    }
+  }
 }
 
 // Containers

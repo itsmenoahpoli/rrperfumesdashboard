@@ -34,6 +34,7 @@ export const ProductListPage = () => {
       {
         name: "Name",
         selector: ({ name }) => name,
+        grow: 3,
       },
       {
         name: "In Stocks",
@@ -52,17 +53,24 @@ export const ProductListPage = () => {
         name: "Date Created",
         selector: ({ created_at }) => created_at,
         format: () => moment().format("MMMM D, YYYY H:mm A"),
+        grow: 2,
       },
       {
         name: "Actions",
         selector: ({ id }) => id,
         right: true,
-        cell: ({ id }) => (
+        cell: (row) => (
           <ButtonGroup>
-            <Button className="btn-edit">
+            <Button
+              className="btn-edit"
+              onClick={() => {
+                setFormModal({ show: true, type: "edit" });
+                setProduct(row);
+              }}
+            >
               <FiEdit2 />
             </Button>
-            <Button className="btn-delete">
+            <Button className="btn-delete" onClick={() => handleDelete(row.id)}>
               <FiTrash2 />
             </Button>
           </ButtonGroup>
@@ -74,7 +82,10 @@ export const ProductListPage = () => {
 
   const [data, setData] = React.useState([]);
   const [categories, setCategories] = React.useState([]);
-  const [formModal, setFormModal] = React.useState({ show: false, data });
+  const [formModal, setFormModal] = React.useState({
+    show: false,
+    type: "add",
+  });
   const [product, setProduct] = React.useState(null);
 
   const getData = async () => {
@@ -108,17 +119,46 @@ export const ProductListPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await _productsService
-      .create(product)
-      .then((response) => {
-        toast.success("New product uploaded");
+    if (formModal.type === "add") {
+      await _productsService
+        .create(product)
+        .then((response) => {
+          toast.success("New product uploaded");
+          getData();
+          setFormModal({ show: false, type: "add" });
+        })
+        .catch((err) => {
+          toast.error("Failed to upload product");
+        });
+    }
 
-        setData([...data, response.data]);
-      })
-      .catch((err) => {
-        console.log(err);
-        toast.error("Failed to upload product, something went wrong");
-      });
+    if (formModal.type === "edit") {
+      await _productsService
+        .update(product.id, product)
+        .then((response) => {
+          toast.success("Product Information Updated");
+          getData();
+          setFormModal({ show: false, type: "add" });
+        })
+        .catch((err) => {
+          toast.error("Failed to update product");
+        });
+    }
+  };
+
+  const handleDelete = async (id) => {
+    console.log(id);
+    if (window.confirm("Do you confirm to delete this record?")) {
+      await _productsService
+        .destroy(id)
+        .then((response) => {
+          toast.success("Successfully deleted");
+          getData();
+        })
+        .catch((err) => {
+          toast.error("Failed to delete record");
+        });
+    }
   };
 
   const onDataSet = (key, value) => {
@@ -128,6 +168,10 @@ export const ProductListPage = () => {
   React.useEffect(() => {
     getData();
   }, []);
+
+  React.useEffect(() => {
+    console.log(product);
+  }, [product]);
 
   React.useEffect(() => {
     console.log(product);
@@ -214,7 +258,7 @@ export const ProductListPage = () => {
 
       <Modal
         show={formModal.show}
-        onHide={() => setFormModal({ show: false, data: null })}
+        onHide={() => setFormModal({ show: false, type: "add" })}
         size="lg"
       >
         <Modal.Header>
@@ -226,6 +270,7 @@ export const ProductListPage = () => {
             <Form.Group className="form-group">
               <Form.Label>Category</Form.Label>
               <Form.Select
+                defaultValue={product?.product_category_id}
                 onChange={(e) =>
                   onDataSet("product_category_id", e.target.value)
                 }
@@ -244,6 +289,7 @@ export const ProductListPage = () => {
               <Form.Label>Product</Form.Label>
               <Form.Control
                 onChange={(e) => onDataSet("name", e.target.value)}
+                defaultValue={product?.name}
                 required
               />
             </Form.Group>
@@ -253,6 +299,7 @@ export const ProductListPage = () => {
               <Form.Control
                 type="number"
                 onChange={(e) => onDataSet("in_stocks", e.target.value)}
+                defaultValue={product?.in_stocks}
                 required
               />
             </Form.Group>
@@ -262,6 +309,7 @@ export const ProductListPage = () => {
               <Form.Control
                 type="number"
                 onChange={(e) => onDataSet("price", e.target.value)}
+                defaultValue={product?.price}
                 required
               />
             </Form.Group>
@@ -270,29 +318,32 @@ export const ProductListPage = () => {
               <Form.Label>Description</Form.Label>
               <Form.Control
                 onChange={(e) => onDataSet("description", e.target.value)}
+                defaultValue={product?.description}
                 as="textarea"
                 rows={5}
                 required
               />
             </Form.Group>
 
-            <Form.Group className="form-group">
-              <Form.Label>Main Image</Form.Label>
-              <Form.Control
-                type="file"
-                onChange={(e) => onDataSet("images", [e.target.files[0]])}
-                accept="image/*"
-                required
-              />
-            </Form.Group>
+            {Boolean(formModal.type === "add") && (
+              <Form.Group className="form-group">
+                <Form.Label>Main Image</Form.Label>
+                <Form.Control
+                  type="file"
+                  onChange={(e) => onDataSet("images", [e.target.files[0]])}
+                  accept="image/*"
+                  required
+                />
+              </Form.Group>
+            )}
 
-            <Form.Group className="form-group mt-5">
-              <Button variant="info" type="submit">
-                Upload
+            <Form.Group className="form-group btn-grid mt-5">
+              <Button variant="secondary" type="submit">
+                {formModal.type === "add" ? "Upload" : "Update Information"}
               </Button>
               <Button
-                variant="danger"
-                onClick={() => setFormModal({ show: false, data: null })}
+                variant="light"
+                onClick={() => setFormModal({ show: false, type: "add" })}
               >
                 Cancel
               </Button>
