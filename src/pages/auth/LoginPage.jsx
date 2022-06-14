@@ -46,6 +46,7 @@ export const LoginPage = () => {
         })
         .catch((err) => {
           setError(true);
+          setLoading(false);
           toast.error("Invalid credentials provided");
         });
     }, 1500);

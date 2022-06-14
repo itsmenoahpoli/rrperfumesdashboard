@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Button } from "react-bootstrap";
+import { FiPower } from "react-icons/fi";
 
 import { AppBreadcrumb } from "components/AppBreadcrumb";
 import { appRoutes } from "routes";
@@ -8,6 +9,13 @@ import { appRoutes } from "routes";
 export const DashboardLayout = (props) => {
   const { children } = props;
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("user");
+
+    navigate("/login", { replace: true });
+  };
 
   const SidebarNavigation = (props) => {
     const { sidebarLinks } = props;
@@ -57,7 +65,13 @@ export const DashboardLayout = (props) => {
 
       <Container fluid className="content-container">
         <Container fluid className="page-content">
-          <AppBreadcrumb />
+          <Container fluid className="d-flex justify-content-between">
+            <AppBreadcrumb />
+
+            <Button variant="danger" size="sm" onClick={handleLogout}>
+              <FiPower /> &nbsp; Log Out
+            </Button>
+          </Container>
           {children}
         </Container>
       </Container>
