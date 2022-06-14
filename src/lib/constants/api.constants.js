@@ -8,5 +8,7 @@ export const apiConstants = {
     },
     PRODUCTS: "/products",
     PRODUCT_CATEGORIES: "/product-categories",
+    PRODUCT_MONITORING: "/product-monitoring",
+    ORDERS: "/orders",
   },
 };

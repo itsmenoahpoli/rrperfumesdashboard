@@ -20,7 +20,9 @@ import { LoginPage } from "pages/auth";
 import { DashboardPage } from "pages/dashboard";
 
 // PRODUCTS PAGES
-import { ProductListPage } from "pages/products";
+import { ProductListPage, ProductMonitoringPage } from "pages/products";
+// ORDERS PAGES
+import { OrderListPage } from "pages/orders";
 
 const appRoutesByRole = (role) => {
   const roleRoutes = {
@@ -70,6 +72,17 @@ export const appRoutes = [
     },
   },
   {
+    path: "/products/monitoring",
+    name: "app-products",
+    component: <ProductMonitoringPage />,
+    meta: {
+      name: "Inventoy Monitoring",
+      auth: true,
+      sidebarItem: true,
+      icon: <BiBarChartAlt />,
+    },
+  },
+  {
     path: "/products",
     name: "app-products",
     component: <ProductListPage />,
@@ -81,9 +94,9 @@ export const appRoutes = [
     },
   },
   {
-    path: "/products",
+    path: "/orders",
     name: "app-products",
-    component: <DashboardPage />,
+    component: <OrderListPage />,
     meta: {
       name: "Orders",
       auth: true,
@@ -91,59 +104,37 @@ export const appRoutes = [
       icon: <BiCart />,
     },
   },
-  {
-    path: "/products",
-    name: "app-products",
-    component: <DashboardPage />,
-    meta: {
-      name: "Order Invoices",
-      auth: true,
-      sidebarItem: true,
-      icon: <BiFile />,
-    },
-  },
-  {
-    path: "/products",
-    name: "app-products",
-    component: <DashboardPage />,
-    meta: {
-      name: "Customers List",
-      auth: true,
-      sidebarItem: true,
-      icon: <BiUserPin />,
-    },
-  },
-  {
-    path: "/products",
-    name: "app-products",
-    component: <DashboardPage />,
-    meta: {
-      name: "Inventoy Monitoring",
-      auth: true,
-      sidebarItem: true,
-      icon: <BiBarChartAlt />,
-    },
-  },
-  {
-    path: "/products",
-    name: "app-products",
-    component: <DashboardPage />,
-    meta: {
-      name: "App Users",
-      auth: true,
-      sidebarItem: true,
-      icon: <BiUserPin />,
-    },
-  },
-  {
-    path: "/products",
-    name: "app-products",
-    component: <DashboardPage />,
-    meta: {
-      name: "App Logs",
-      auth: true,
-      sidebarItem: true,
-      icon: <BiPoll />,
-    },
-  },
+  // {
+  //   path: "/products",
+  //   name: "app-products",
+  //   component: <DashboardPage />,
+  //   meta: {
+  //     name: "Customers List",
+  //     auth: true,
+  //     sidebarItem: true,
+  //     icon: <BiUserPin />,
+  //   },
+  // },
+  // {
+  //   path: "/products",
+  //   name: "app-products",
+  //   component: <DashboardPage />,
+  //   meta: {
+  //     name: "App Users",
+  //     auth: true,
+  //     sidebarItem: true,
+  //     icon: <BiUserPin />,
+  //   },
+  // },
+  // {
+  //   path: "/products",
+  //   name: "app-products",
+  //   component: <DashboardPage />,
+  //   meta: {
+  //     name: "App Logs",
+  //     auth: true,
+  //     sidebarItem: true,
+  //     icon: <BiPoll />,
+  //   },
+  // },
 ];
