@@ -41,15 +41,15 @@ const getUserRole = () => {
 };
 
 export const appRoutes = [
-  // {
-  //   path: "/",
-  //   component: <Navigate to="/dashboard" replace />,
-  //   meta: {
-  //     name: "Dashboard",
-  //     auth: true,
-  //     sidebarItem: false,
-  //   },
-  // },
+  {
+    path: "/",
+    component: <Navigate to="/dashboard" replace />,
+    meta: {
+      name: "Dashboard",
+      auth: true,
+      sidebarItem: false,
+    },
+  },
   {
     path: "/login",
     name: "auth-login",
@@ -67,7 +67,7 @@ export const appRoutes = [
     meta: {
       name: "Dashboard",
       auth: true,
-      sidebarItem: true,
+      sidebarItem: false,
       icon: <BiHomeAlt />,
     },
   },
