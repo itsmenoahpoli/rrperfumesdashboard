@@ -43,7 +43,7 @@ const getUserRole = () => {
 export const appRoutes = [
   {
     path: "/",
-    component: <Navigate to="/dashboard" replace />,
+    component: <Navigate to="/products" replace />,
     meta: {
       name: "Dashboard",
       auth: true,
@@ -63,7 +63,7 @@ export const appRoutes = [
   {
     path: "/dashboard",
     name: "app-dashboard",
-    component: <Navigate to="/dashboard" replace />,
+    component: <Navigate to="/products" replace />,
     meta: {
       name: "Dashboard",
       auth: true,
