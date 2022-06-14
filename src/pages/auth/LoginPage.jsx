@@ -1,34 +1,69 @@
 import React from "react";
-import { Container, Card, Form, FloatingLabel, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import {
+  Container,
+  Card,
+  Form,
+  FloatingLabel,
+  Button,
+  Spinner,
+} from "react-bootstrap";
 import toast from "react-hot-toast";
 
 import { AuthLayout } from "components/layouts";
+import { AuthService } from "lib/services/modules";
+
+const _authService = new AuthService();
 
 export const LoginPage = () => {
+  const navigate = useNavigate();
+
   const [credentials, setCredentials] = React.useState({
     email: "",
     password: "",
   });
+  const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
-    setError(true);
-    toast.error("ERROR: Failed connection to server");
+    resetError();
+    setLoading(true);
+
+    setTimeout(async () => {
+      await _authService
+        .login(credentials)
+        .then((response) => {
+          const { user, accessToken } = response.data;
+
+          localStorage.setItem("user", user);
+          localStorage.setItem("accessToken", accessToken);
+
+          navigate("/", {
+            replace: true,
+          });
+        })
+        .catch((err) => {
+          setError(true);
+          toast.error("Invalid credentials provided");
+        });
+    }, 1500);
   };
 
   const resetError = () => {
+    setLoading(false);
     setError(false);
   };
 
   return (
     <AuthLayout>
       <Container fluid className="form-container">
-        <Card className="col-md-2 border-0 mx-auto p-2">
+        <Card className="col-xs-10 col-sm-8 col-md-4 col-lg-3 col-xl-2 mx-auto">
           <Card.Body>
-            <h6 className="text-center text-muted mb-3">
-              RR Perfumes & Collection Dashboard Panel
+            <h4 className="text-center mb-3">RR PERFUMES & COLLECTION</h4>
+            <h6 className="text-center text-danger mb-3">
+              INVENTORY DASHBOARD
             </h6>
 
             <Form onSubmit={handleLogin}>
@@ -65,8 +100,8 @@ export const LoginPage = () => {
                 </FloatingLabel>
               </Form.Group>
 
-              <Button type="submit" className="py-2 w-100">
-                LOG IN
+              <Button type="submit" className="py-2 w-100" disabled={loading}>
+                {loading ? <Spinner animation="border" size="sm" /> : "LOG IN"}
               </Button>
             </Form>
           </Card.Body>

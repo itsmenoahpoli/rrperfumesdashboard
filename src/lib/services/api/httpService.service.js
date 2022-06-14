@@ -7,18 +7,9 @@ export default class HttpService {
     this.apiEndpointURL = apiEndpointURL;
   }
 
-  axiosInstance() {
-    axios.create({
+  http() {
+    return axios.create({
       baseURL: apiConstants.BASE_URL,
     });
-  }
-
-  async httpRequest(method, payload, queryString = "") {
-    let response = await this.axiosInstance()[method](
-      this.apiEndpointURL,
-      payload
-    );
-
-    return response;
   }
 }

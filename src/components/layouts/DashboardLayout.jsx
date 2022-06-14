@@ -44,7 +44,7 @@ export const DashboardLayout = (props) => {
   };
 
   React.useEffect(() => {
-    if (localStorage.getItem("authToken") === null) {
+    if (localStorage.getItem("accessToken") === null) {
       navigate("/login", {
         replace: true,
       });

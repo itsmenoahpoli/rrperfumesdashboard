@@ -36,11 +36,7 @@ form {
 
 // AUTH-CONTAINER
 .auth-container {
-  // background: #f1f1f1 !important;
-  background: url(./../assets/images/login-bg.jpg);
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+  background: #000 !important;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -55,7 +51,7 @@ form {
 
 // DASHBOARD CONTAINER
 $sidebarWidth: 260px;
-$sidebarBg: #1363df;
+$sidebarBg: #000;
 
 .dashboard-container {
   background: #fcfcfc !important;
@@ -81,10 +77,6 @@ $sidebarBg: #1363df;
     .sidebar-wrapper {
       height: 100%;
       width: 100%;
-      // background: url(./../assets/images/login-bg2.jpg);
-      // background-size: cover;
-      // background-position: center center;
-      // background-repeat: no-repeat;
       position: relative;
 
       .sidebar-bg-overlay {
@@ -175,10 +167,6 @@ $sidebarBg: #1363df;
     background: none !important;
     border: 0;
     border-radius: 14px !important;
-
-    // .card-body {
-    //   height: 50vh !important;
-    // }
   }
 }
 

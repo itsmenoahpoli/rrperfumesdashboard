@@ -21,7 +21,7 @@ const App = () => {
       <Toaster
         toastOptions={{
           style: {
-            fontSize: "15px",
+            fontSize: "14px",
           },
         }}
       />
